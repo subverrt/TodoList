@@ -75,16 +75,25 @@ button:hover {
 }
 
 .todo-item h3 {
+  display: flex;
   margin: 0;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   flex-grow: 1;
-  margin-right: 20px;
+  justify-content: flex-start;
 }
 
 .todo-item .buttons {
   display: flex;
   gap: 10px;
+}
+
+.todo-item input[type="checkbox"] {
+  display: flex;
+  flex-direction: row;
+  width: 17px;
+  height: 20px;
+  margin-left: 20px;
 }
 
 .todo-item input {
@@ -94,32 +103,12 @@ button:hover {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   margin-right: 10px;
+
 }
+
 
 .todo-item .save-button {
   background-color: #009688;
   padding: 5px 10px;
   font-size: 14px;
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 28px;
-    letter-spacing: -0.8px;
-  }
-
-  .input-container {
-    flex-direction: column;
-  }
-
-  .todo-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .todo-item .buttons {
-    width: 100%;
-    justify-content: flex-end;
-    margin-top: 10px;
-  }
 }
