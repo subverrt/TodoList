@@ -7,13 +7,19 @@ function saveTodos() {
 function addTodo() {
   const value = document.querySelector("#inp").value.trim();
   if (value) {
-    todos.push({ title: value });
+    todos.push({ title: value, completed: false });
     document.querySelector("#inp").value = ""; 
     saveTodos();
     render();
   } else {
     alert("Please enter a task!"); 
   }
+}
+
+function toggleTodoCompletion(index) {
+  todos[index].completed = !todos[index].completed;
+  saveTodos();
+  render();
 }
 
 function deleteTodo(index) {
@@ -48,18 +54,20 @@ function createTodoComponent(todo, index) {
   div.id = `todo-${index}`; 
   div.innerHTML = `
     <h3>${index + 1}. ${todo.title}</h3>
-    <button onclick="enableEdit(${index})">Edit</button>
+    <input type="checkbox" ${todo.completed ? "checked" : ""} onclick="toggleTodoCompletion(${index})" />
     <button onclick="deleteTodo(${index})">Delete</button>
+    <button onclick="enableEdit(${index})">Edit</button>
   `;
   return div;
 }
 
 function render() {
   const todosContainer = document.querySelector("#todos");
-  todosContainer.innerHTML = ""; 
+  todosContainer.innerHTML = "";
   todos.forEach((todo, index) => {
     const element = createTodoComponent(todo, index);
     todosContainer.appendChild(element);
   });
 }
+
 render();
