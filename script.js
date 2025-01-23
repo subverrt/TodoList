@@ -55,8 +55,8 @@ function createTodoComponent(todo, index) {
   div.innerHTML = `
     <h3>${index + 1}. ${todo.title}</h3>
     <input type="checkbox" ${todo.completed ? "checked" : ""} onclick="toggleTodoCompletion(${index})" />
-    <button onclick="deleteTodo(${index})">Delete</button>
     <button onclick="enableEdit(${index})">Edit</button>
+    <button onclick="deleteTodo(${index})">Delete</button>
   `;
   return div;
 }
